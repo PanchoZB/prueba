@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Administrador</title>
+    <link href="~/estilos/estilo.css" rel="stylesheet" />
+</head>
+<body style="margin-top:-10px">
+    <header>
+    <nav class="menuHorizontal">
+        <ul>
+
+            <li>
+                <a href="~/Admin">Inicio</a>
+            </li>
+            <li>
+                <a href="~/Admin/Juguete">Administrar Juguetes 🧸</a>
+            </li>
+
+            <li>
+                <a href="~/Account/Logout">Cerrar sesión</a>
+            </li>
+
+
+        </ul>
+    </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>

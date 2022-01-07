@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html style="background-blend-mode: lighten; background-position: center; background-size: 1000px; background-repeat: no-repeat; background-color: rgb(128 128 128 / 1); background-image: url(https://cdn.pixabay.com/photo/2018/03/05/15/25/toys-3200969_960_720.jpg)" 
+      lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/estilos/estilo.css" rel="stylesheet" />
+    <style>
+        /* styles for validation helpers */
+        .field-validation-error {
+            color: #b94a48;
+        }
+
+        .field-validation-valid {
+            display: none;
+        }
+
+        input.input-validation-error {
+            border: 1px solid #b94a48;
+        }
+
+
+        select.input-validation-error {
+            border: 1px solid #b94a48;
+        }
+
+        input[type="checkbox"].input-validation-error {
+            border: 0 none;
+        }
+
+        .validation-summary-errors {
+            color: #b94a48;
+        }
+
+        .validation-summary-valid {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <form style="margin:auto; height:500PX; width:20%" method="post" action="~/Account/Login">
+            <div>
+                <h1>Iniciar Sesión</h1>
+
+                <label style="color:black;font-size:20px;font-weight:bold">Usuario:</label>
+                <input type="text" required name="username" /><br /><br />
+
+
+                <label style="color:black;font-size:20px;font-weight:bold">Password:</label>
+                <input type="password" required name="password" /><br /><br />
+
+                <div class="botones">
+                    <p style="color:red;text-align:center;font-size:20px">
+
+                        @Html.ValidationSummary()
+                    </p><br />
+                    <input style="background-color: #ee707d; margin-left: 100px; color: white; padding: 5px; width: 100px; border: 1px solid black; " type="submit" value="Entrar" />
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

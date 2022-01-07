@@ -1,0 +1,39 @@
+﻿@model PracticaU4y5.Models.Juguete
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+
+@{ Layout = "layout"; }
+<body>
+
+    <section id="cuerpodedatosdeequipo2">
+        <h1 style="color:white;width:100%;text-align:center" id="tituloh1infoequipo">
+            Acerca de @Model.Nombre
+        </h1>
+        @if (System.IO.File.Exists($"{env.WebRootPath}/img/{Model.Id}.jpg"))
+        {
+<img id="fotito" src="~/img/@(Model.Id).jpg" alt="@(Model.Nombre)" /> }
+            else
+            {
+<img id="fotito" src="~/img/Nophoto.png" alt="@(Model.Nombre)" />}
+        @*<img id="fotito" src="~/imgs_integrantes/@(Model.Id)_i.png" alt="@(Model.Nombre)" />*@
+        <div id="datosequipo2">
+
+            <p>Nombre: <b>@Model.Nombre</b></p>
+            <p>Descripción: <b>@Model.Dato.Descripcion</b></p>
+            <p>Altura: <b>@Model.Dato.Altura</b></p>
+            <p>Peso: <b>@Model.Dato.Peso</b></p>
+            <p>Material: <b>@Model.Dato.Material</b></p>
+            
+
+
+            <a href="javascript:window.history.back()" style=" line-height: 35px; width: 200px; height: 35px; display: block; text-align: center; text-decoration: none; background-color: #ee707d; color: white; padding: 5px; border: 1px solid black; float: right; margin-top: 100px; ">
+                Regresar
+            </a>
+
+        </div>
+
+    </section>
+
+</body>
+
+

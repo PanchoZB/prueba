@@ -1,0 +1,38 @@
+﻿@model PracticaU4y5.Models.Models.JugueteViewModel
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+@{
+    Layout = "layout";
+
+}
+
+    <section class="listaT" style="color:white;  background-color: #3c83bc ">
+        @*<h1 style="color:white">Lista de equipos ⚽</h1>*@
+        <div class="listaT">
+
+
+            @foreach (var item in Model.juguete)
+            {
+                <ul class="list">
+
+
+                    <li>
+
+                        <h2 style="color:black" id="NCamiseta">@item.Nombre</h2>
+
+
+                        <a href="~/@(item.Nombre.Replace(" ","-"))/Juguetes">
+                            @if (System.IO.File.Exists($"{env.WebRootPath}/img/{item.Id}.jpg"))
+                            {
+                                <img style="width:200px;height:200px" src="~/img/@(item.Id).jpg" />
+                            }
+                            else
+                            {
+                                <img style="width:200px;height:200px"  src="~/img/Nophoto.png"/>
+                            }
+                        </a>
+                    </li>
+                </ul>
+            }
+        </div>
+    </section>
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PracticaU4y5.Models.Juguete>
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+@{ Layout = "Admin_Layout"; }
+
+<body>
+    <section class="listaT" style="color:white;   background-color: #3c83bc ">
+        @*<h2 id="aaa" style="color:white;background-color:transparent">Area de mantenimiento</h2>*@
+        <a href="~/Admin/Juguete/Agregar" style="font-weight: bold; line-height: 20px; width: 60px; height: 20px; display: block; text-align: center; text-decoration: none; background-color: #ee707d; color: white; padding: 5px; border: 1px solid black; float: right; margin-right: 5px ">
+            Agregar
+        </a>
+        <div class="listaT">
+            @foreach (var item in Model)
+            {
+                <ul class="list">
+                    <li>
+                        <h2 style="color:black" id="NCamiseta">@item.Nombre</h2>
+                        @*<a href="~/equipo/informacion/@item.Nombre.Replace(" ","-")">*@
+                        @if (System.IO.File.Exists($"{env.WebRootPath}/img/{item.Id}.jpg"))
+                        {
+                            <img style="width:200px;height:200px" src="~/img/@(item.Id).jpg" />
+                        }
+                        else
+                        {
+                            <img style="width:200px;height:200px" src="~/img/Nophoto.png" />
+                        }
+
+                        @*<img src="~/imgs_equipos/@(item.Id)_e.jpg" />*@
+                        @*</a>*@
+                    <div class="btnAdm">
+                        <a href="~/Admin/Juguete/Editar/@(item.Id)">Editar</a>
+
+
+
+                        @if (User.IsInRole("Administrador"))
+                        {
+                    <a href="~/Admin/Juguete/Eliminar/@(item.Id)">Eliminar</a>}
+
+
+
+                    </div>
+                    </li>
+
+                </ul>
+
+            }
+        </div>
+    </section>
+</body>
+

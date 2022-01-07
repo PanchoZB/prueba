@@ -1,0 +1,81 @@
+﻿@model PracticaU4y5.Areas.Admin.Models.AgregarViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form method="post" action="~/Admin/Juguete/Editar" enctype="multipart/form-data">
+    <div>
+        <input asp-for="juguete.Id" type="hidden" name="Id" value="@Model.juguete.Id" />
+        <input asp-for="Dato.Id" type="hidden" name="Dato.Id" value="@Model.Dato.Id" />
+        <label>Nombre:</label>
+        <br />
+        <br />
+        <input asp-for="juguete.Nombre" name="Nombre" value="@Model.juguete.Nombre" />
+        <br />
+        <br />
+        <label>Empresa</label>
+        <br />
+        <br />
+        <select required="required" asp-for="juguete.Idemp"
+                asp-items="@(new SelectList(Model.Empresas,"Id","NombreEmpresa"))">
+            <option selected="selected" value=""> Seleccionar una empresa </option>
+        </select>
+        <br />
+        <br />
+        <label>Descripcion</label>
+        <br />
+        <br />
+        <input asp-for="juguete.Dato.Descripcion" name="Descripcion" value="@Model.Dato.Descripcion" />
+        <br />
+        <br />
+        <label>Altura</label>
+        <br />
+        <br />
+        <input type="text" asp-for="juguete.Dato.Altura" name="Altura" value="@Model.Dato.Altura" />
+        <br />
+        <br />
+        <label>Peso</label>
+        <br />
+        <br />
+        <input type="text" asp-for="juguete.Dato.Peso" name="Peso" value="@Model.Dato.Peso" />
+        <br />
+        <br />
+        <label>Meterial de Fabricacion</label>
+        <br />
+        <br />
+        <input type="text" asp-for="juguete.Dato.Material" name="Material" value="@Model.Dato.Material" />
+        <br />
+        <br />
+        <label>Imagen:</label>
+        <br />
+        <input type="file" id="Archivo" name="Archivo" accept="image/jpeg" />
+        <br />
+        <img id="imagePreview" src="~/img/@(Model.juguete.Id).jpg" alt="Vista previa de la imagen" height="250" width="290" />
+
+        <div class="botones">
+            <p id="error">@Html.ValidationSummary()</p>
+            <input type="submit" value="Editar" id="btnEditar" />
+            <a href="~/Admin/Juguete/">
+                <input type="button" value="Cancelar" id="btnCancelar" formnovalidate="formnovalidate" />
+            </a>
+        </div>
+    </div>
+</form>
+<script>
+    function mostrarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.querySelector('#imagePreview').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.querySelector("#Archivo").addEventListener("change", event => {
+        mostrarImagen(event.target)
+    });
+
+
+
+
+</script>
+
